@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,38 +44,16 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         txtFirstNameCenterConstraint.constant = 0
-
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.3,
-                       options: [],
-                       animations: { [weak self] in
-                        self?.view.layoutIfNeeded()
-          }, completion: nil)
+        self.view.animation(duration: 0.5, delay: 0.3)
 
         txtLastNameCenterConstraint.constant = 0
-
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.4,
-                       animations: { [weak self] in
-                        self?.view.layoutIfNeeded()
-          }, completion: nil)
+        self.view.animation(duration: 0.5, delay: 0.4)
         
         btnLoginLeadingConstraint.constant = 25
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.6,
-                       options: [.curveEaseOut],
-                       animations: { [weak self] in
-                        self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
+        self.view.animation(duration: 0.5, delay: 0.6)
         
         btnRegisterTrailingConstraint.constant = 25
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.6,
-                       options: [.curveEaseOut],
-                       animations: { [weak self] in
-                        self?.view.layoutIfNeeded()
-        }, completion: nil)
+        self.view.animation(duration: 0.5, delay: 0.6)
         
         containerViewTopConstraint.constant = self.view.center.y - 30
         UIView.animate(withDuration: 0.6,
@@ -92,14 +69,16 @@ class ViewController: UIViewController {
         }, completion: nil)
         
         imgLogoBottomConstraint.constant = self.view.center.x - (self.view.frame.height - 125)
-        UIView.animate(withDuration: 0.6,
-                       delay: 0.9,
-                       options: [.curveEaseOut],
-                       animations: { [weak self] in
-                        self?.view.layoutIfNeeded()
+        self.view.animation(duration: 0.6, delay: 0.9)
+    }
+}
+
+extension UIView{
+    func animation(duration: Double, delay: Double){
+        UIView.animate(withDuration: duration, delay: delay, options: [.curveEaseOut], animations: {
+            [weak self] in
+            self?.layoutIfNeeded()
         }, completion: nil)
     }
-
-
 }
 
